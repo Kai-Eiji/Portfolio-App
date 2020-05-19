@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static%}
+{% block page_content %}
+<style>
+    h2 {text-align: center;}
+    li {text-align: left; font-size: 20px;}
+    .center {text-align: center;}
+    ul.bullets {    list-style-type: disc !important;
+            padding-left:1em !important;
+            margin-left:1em;
+        }
+    .same-line > h1 {display: inline-block;}
+    .same-line > li {display: inline-block;}
+    span {padding-left: 7px;}
+</style>
+<div class="container mt-4">
+    <div class="center same-line">
+        <h1><a href="{{ new_file.file.url }}" target="_new">"{{new_file.name}}"</a></h1>
+        <span>Upload Date: {{new_file.date}}</span>
+    </div>
+    
+
+    <ul class="bullets mt-4">
+        {% for file in other_files %}
+            <div class="same-line">
+                <li class="mb-3"><a href="{{ file.file.url }}" target="_new">"{{ file.name }}"</a></li>
+                <span>Upload Date: {{file.date}}</span>
+            </div>
+        {% endfor%}
+    </ul>
+</div>
+{% endblock %}
